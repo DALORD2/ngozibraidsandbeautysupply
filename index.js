@@ -120,7 +120,7 @@ function productImage(product, className = '') {
   if (!product.image) {
     return `<div class="gift-card-art ${className}" aria-label="Sample gift card artwork"><span>NGOZI</span><strong>♡</strong><small>A LITTLE BEAUTY</small></div>`;
   }
-  return `<img class="${className}" src="${product.image}" alt="${product.alt}" loading="lazy" decoding="async">`;
+  return `<img class="${className}" src="${product.image}" alt="${product.alt}" loading="eager" decoding="async">`;
 }
 
 function productCard(product) {

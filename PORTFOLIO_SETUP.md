@@ -19,7 +19,7 @@ The public portfolio and its separate admin page use Supabase for shared photo s
 
 ## 2. Set up the owner sign-in
 
-1. In Supabase, open **Authentication → URL Configuration**. For this local preview, set the **Site URL** to `http://127.0.0.1:8765` and add `http://127.0.0.1:8765/**` to **Redirect URLs**. When the site is deployed, replace these with the public website URL and its redirect pattern.
+1. In Supabase, open **Authentication → URL Configuration**. Set the **Site URL** to `https://dalord2.github.io/ngozibraidsandbeautysupply/` and add `https://dalord2.github.io/ngozibraidsandbeautysupply/**` to **Redirect URLs**. The password-reset flow returns to the public `admin.html` page. For local testing, add `http://127.0.0.1:8765/**` as an additional redirect URL; do not use the local IP as the deployed **Site URL**.
 2. Open **Authentication → Users** and send an invitation to the salon owner. Public sign-up is not provided by this site.
 3. Copy the invited user's UUID and run this statement in the SQL Editor, replacing the example UUID:
 

@@ -1,6 +1,7 @@
 (() => {
   const TABLE_NAME = "hair_portfolio";
   const BUCKET_NAME = "hair-portfolio";
+  const ADMIN_REDIRECT_URL = "https://dalord2.github.io/ngozibraidsandbeautysupply/admin.html";
   const MAX_FILE_SIZE = 8 * 1024 * 1024;
   const SUPPORTED_TYPES = new Map([
     ["image/jpeg", "jpg"],
@@ -71,7 +72,7 @@
     const image = document.createElement("img");
     image.src = getPublicImageUrl(client, photo.storage_path);
     image.alt = photo.caption || "Hair style created at Ngozi Hair Braiding & Beauty Supply";
-    image.loading = "lazy";
+    image.loading = "eager";
     image.decoding = "async";
 
     const caption = document.createElement("figcaption");
@@ -150,7 +151,7 @@
       const image = document.createElement("img");
       image.src = getPublicImageUrl(client, photo.storage_path);
       image.alt = photo.caption || "Hair portfolio photo";
-      image.loading = "lazy";
+      image.loading = "eager";
       image.decoding = "async";
 
       const details = document.createElement("div");
@@ -280,11 +281,8 @@
       forgotPasswordButton.disabled = true;
       setStatus(authStatus, "Sending a password-reset email...", "info");
       try {
-        const redirectTo = new URL(window.location.href);
-        redirectTo.hash = "";
-        redirectTo.search = "";
         const { error } = await client.auth.resetPasswordForEmail(email, {
-          redirectTo: redirectTo.toString()
+          redirectTo: ADMIN_REDIRECT_URL
         });
         if (error) throw error;
         setStatus(authStatus, "If an account exists for that email, a password-reset email has been sent.", "success");
